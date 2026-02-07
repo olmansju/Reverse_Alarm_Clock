@@ -1,0 +1,107 @@
+<div class="app">
+  <header>
+    <h1>Reverse Alarm Clock</h1>
+    <p>Set your wake time and sleep goal — I’ll tell you when to start your bedtime routine.</p>
+  </header>
+
+  <section id="setupView">
+  <section class="card">
+    <div class="grid">
+      <label>
+        Wake time
+        <input id="wakeTime" type="time" value="06:30" />
+      </label>
+
+      <label>
+        Sleep goal (hours)
+        <input id="sleepHours" type="number" min="0" step="0.25" value="8" />
+      </label>
+
+      <label>
+        Pre-bed ritual (minutes)
+        <input id="ritualMins" type="number" min="0" step="5" value="45" />
+      </label>
+
+      <label class="toggle">
+        <input id="notifyToggle" type="checkbox" />
+        Enable notifications (optional)
+      </label>
+    </div>
+
+    <div class="actions">
+      <button id="calcBtn">Calculate</button>
+      <button id="startBtn" class="primary" disabled>Start Night Monitor</button>
+      <button id="stopBtn" disabled>Stop</button>
+      <button id="testBtn" class="ghost">Test Alarm</button>
+    </div>
+  </section>
+    </section>
+
+  <section id="nightView" class="hidden">
+  <section class="card">
+    <h2>Tonight’s plan</h2>
+    <div class="results">
+      <div>
+        <div class="label">Start ritual at</div>
+        <div id="ritualStartOut" class="value">—</div>
+      </div>
+      <div>
+        <div class="label">Lights out at</div>
+        <div id="lightsOutOut" class="value">—</div>
+      </div>
+      <div>
+        <div class="label">Wake at</div>
+        <div id="wakeOut" class="value">—</div>
+      </div>
+      <div class="countdownRow">
+  <div>
+    <div class="label">Countdown to ritual start</div>
+    <div id="countdownOut" class="countdown">—</div>
+    <div id="countdownHint" class="hint"></div>
+  </div>
+
+  <div class="warningControls">
+    <div class="label">Warning chime</div>
+    <div class="warningLine">
+      <select id="warningMins">
+        <option value="0">Off</option>
+        <option value="5" selected>5 minutes before</option>
+        <option value="10">10 minutes before</option>
+        <option value="15">15 minutes before</option>
+        <option value="20">20 minutes before</option>
+        <option value="30">30 minutes before</option>
+      </select>
+      <button id="testWarningBtn" class="ghost">Test chime</button>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <div class="status">
+      <div class="label">Status</div>
+      <div id="statusOut" class="value">Not running</div>
+      <div id="nextCheckOut" class="hint"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Alarm</h2>
+    <div id="alarmBox" class="alarm hidden" role="alert" aria-live="assertive">
+      <div class="alarm-title">Time to start your bedtime routine.</div>
+      <div class="alarm-sub">Do the ritual now so you can be asleep on time.</div>
+      <button id="dismissBtn" class="primary">Dismiss</button>
+    </div>
+  </section>
+    <div class="nightActions">
+    <button id="stopBtnNight" class="primary">Stop Night Monitor</button>
+  </div>
+    </section>
+
+  <!-- Tiny built-in beep (very short) -->
+  <audio id="beep" preload="auto">
+    <source
+      src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAIA+AAABAAgAZGF0YQAAAAA="
+      type="audio/wav"
+    />
+  </audio>
+</div>
